@@ -7,6 +7,8 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   SafeAreaView,
   ScrollView,
@@ -24,6 +26,11 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import HomeScreen from './screens/HomeScreen';
+import Writer, { FormalPlayInput } from './screens/Writer';
+import CoachDash from './screens/CoachDash';
+import { Offense, OffenseFormation, OffensePlays } from './screens/OInput/OInput';
+import { Defense } from './screens/DInput/DInput';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -55,13 +62,12 @@ function Section({children, title}: SectionProps): JSX.Element {
   );
 }
 
-function App(): JSX.Element {
+function Default() {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -93,6 +99,31 @@ function App(): JSX.Element {
         </View>
       </ScrollView>
     </SafeAreaView>
+  );
+}
+
+function App(): JSX.Element {
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
+  const Stack = createNativeStackNavigator();
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name='Home' component={HomeScreen} />
+        <Stack.Screen name='Inputer' component={Writer} />
+        <Stack.Screen name="Coach's Dash" component={CoachDash} />
+        <Stack.Screen name='Offense' component={Offense} />
+        <Stack.Screen name='O Formations' component={OffenseFormation} />
+        <Stack.Screen name='Pick O Play' component={OffensePlays} />
+        <Stack.Screen name='Defense' component={Defense} />
+        <Stack.Screen name='Play Input' component={FormalPlayInput} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
