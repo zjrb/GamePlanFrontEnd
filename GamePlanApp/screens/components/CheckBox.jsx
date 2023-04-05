@@ -3,12 +3,21 @@ import { useState } from 'react';
 
 export default function CheckBox({checked, label, onPress}) {
 
+  const [val, setVal] = useState(checked ? checked : false);
+
+  const handlePress = () => {
+    setVal(!val);
+    if (onPress) {
+      onPress(!val);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{label}</Text>
 
-      <Pressable onPress={onPress} hitSlop={10}>
-        <View style={[styles.checkbox, checked ? styles.checked : {}]}></View>
+      <Pressable onPress={handlePress} hitSlop={10}>
+        <View style={[styles.checkbox, val ? styles.checked : {}]}></View>
       </Pressable>
     </View>
   );

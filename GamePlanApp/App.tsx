@@ -119,7 +119,7 @@ function App(): JSX.Element {
         <Stack.Screen name="Coach's Dash" component={CoachDash} />
         <Stack.Screen name='Offense' component={Offense} />
         <Stack.Screen name='O Formations' component={OffenseFormation} />
-        <Stack.Screen name='Pick O Play' component={OffensePlays} />
+        <Stack.Screen name='Pick a Play' component={OffensePlays} />
         <Stack.Screen name='Defense' component={Defense} />
         <Stack.Screen name='Play Input' component={FormalPlayInput} />
       </Stack.Navigator>

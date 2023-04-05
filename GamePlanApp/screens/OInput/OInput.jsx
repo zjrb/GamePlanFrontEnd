@@ -1,15 +1,12 @@
 import {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
 
-
 export function Offense({navigation}) {
-  const playTypes = [
-    'Pass', 'Run', 'Option',
-  ];
+  const playTypes = ['Pass', 'Run'];
 
   const onPlayPick = play => {
     console.log(play);
     navigation.navigate('O Formations', {
-      playType: play
+      playType: play,
     });
   };
 
@@ -18,8 +15,8 @@ export function Offense({navigation}) {
       style={{
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
-        gap: 10,
+        justifyContent: 'space-evenly',
+        // gap: 10,
       }}>
       {playTypes.map((p, i) => (
         <Button
@@ -39,7 +36,6 @@ export function Offense({navigation}) {
 }
 
 export function OffenseFormation({navigation, route}) {
-
   // const { playType } = route.params;
 
   const formations = [
@@ -50,11 +46,13 @@ export function OffenseFormation({navigation, route}) {
     'Single Back',
     'Shotgun',
     'Wildcat',
+    'Colorado',
+    'Wing',
   ];
 
   const onFormationPick = formation => {
     console.log(formation);
-    navigation.navigate('Pick O Play', {
+    navigation.navigate('Pick a Play', {
       ...route.params,
       formation: formation,
     });
@@ -83,32 +81,41 @@ export function OffenseFormation({navigation, route}) {
       ))}
     </View>
   );
-
-
 }
 
 export function OffensePlays({navigation, route}) {
+  const {playType} = route.params;
 
-  // const {playType, formation} = route.params;
-
-  const plays = [
-    'Slants',
-    'QB Sneak',
-    'California',
-    'Screen',
-    'Draw',
-    'Criss-Cross',
-    'Alabama',
-    'Fade Posts',
-    'TE Cross',
-    'Hook Cross',
-  ];
-
+  const plays =
+    playType === 'Pass'
+      ? [
+          'Slants',
+          'California',
+          'Criss-Cross',
+          'Alabama',
+          'Fade Posts',
+          'TE Cross',
+          'Hook Cross',
+          'Zig-Zag',
+          'Slot Special',
+          'Read Option',
+        ]
+      : [
+          'A Gap',
+          'B Gap',
+          'Sneek',
+          'Pull',
+          'Sweep',
+          'QB Sneak',
+          'Screen',
+          'Draw',
+          'Read Option',
+        ];
   const onPlayPick = play => {
     console.log(play);
     navigation.navigate('Play Input', {
       ...route.params,
-      playname: play,
+      playName: play,
     });
   };
 
