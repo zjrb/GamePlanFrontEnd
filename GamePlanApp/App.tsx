@@ -31,6 +31,8 @@ import Writer, { FormalPlayInput } from './screens/Writer';
 import CoachDash from './screens/CoachDash';
 import { Offense, OffenseFormation, OffensePlays } from './screens/OInput/OInput';
 import { Defense } from './screens/DInput/DInput';
+import DRundown from './screens/Coach/DRundown';
+import ORundown from './screens/Coach/ORundown';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -117,6 +119,8 @@ function App(): JSX.Element {
         <Stack.Screen name='Home' component={HomeScreen} />
         <Stack.Screen name='Inputer' component={Writer} />
         <Stack.Screen name="Coach's Dash" component={CoachDash} />
+        <Stack.Screen name="Offensive Rundown" component={ORundown} />
+        <Stack.Screen name="Defensive Rundown" component={DRundown} />
         <Stack.Screen name='Offense' component={Offense} />
         <Stack.Screen name='O Formations' component={OffenseFormation} />
         <Stack.Screen name='Pick a Play' component={OffensePlays} />

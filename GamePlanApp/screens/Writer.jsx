@@ -49,6 +49,9 @@ export function FormalPlayInput({navigation, route}) {
   const downs = [1, 2, 3, 4];
   const [down, setDown] = useState(0);
 
+  const hashes = ['L', 'C', 'R'];
+  const [hash, setHash] = useState();
+
   const Pass = playType === 'Pass';
 
   const Run = playType === 'Run';
@@ -108,7 +111,7 @@ export function FormalPlayInput({navigation, route}) {
           />
         )}
 
-        <View style={styles.downs}>
+        <View style={styles.list}>
           <Text>Down:</Text>
           {downs.map(d => (
             <Pressable
@@ -230,12 +233,23 @@ export function FormalPlayInput({navigation, route}) {
           defaultValue={''}
         />
 
-        <CheckBox
-          label="Add to radar"
-          onPress={val => editPlay('addToRadar', val)}
-        />
+        <View style={styles.list}>
+          <Text>Hash:</Text>
+          {hashes.map(h => (
+            <Pressable
+              hitSlop={3}
+              onPressIn={() => {
+                editPlay('hash', h);
+                setHash(h);
+              }}
+              // style={pressed => (pressed ? {color: '#86bbf0'} : {})}
+            >
+              <Text style={h === hash ? {color: '#86bbf0'} : {}}>{h}</Text>
+            </Pressable>
+          ))}
+        </View>
 
-        <CheckBox label="flagPlay" onPress={val => editPlay('flagPlay', val)} />
+        <CheckBox label="Tag Play" onPress={val => editPlay('tagPlay', val)} />
 
         <TextInput
           placeholder="Notes"
@@ -248,7 +262,7 @@ export function FormalPlayInput({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
-  downs: {
+  list: {
     flexDirection: 'row',
     gap: 10,
   },
