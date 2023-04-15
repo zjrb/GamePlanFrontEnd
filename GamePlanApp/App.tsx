@@ -27,12 +27,19 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import HomeScreen from './screens/HomeScreen';
-import Writer, { FormalPlayInput } from './screens/Writer';
-import CoachDash from './screens/CoachDash';
-import { Offense, OffenseFormation, OffensePlays } from './screens/OInput/OInput';
-import { Defense } from './screens/DInput/DInput';
+import Writer, {FormalDPlayInput, FormalOPlayInput} from './screens/Writer';
+import CoachDash, { StatsHome } from './screens/CoachDash';
+import {Offense, OffenseFormation, OffensePlays} from './screens/OInput/OInput';
+import {
+  Blitz,
+  Coverage,
+  In,
+  LineScheme,
+  ORan,
+} from './screens/DInput/DInput';
 import DRundown from './screens/Coach/DRundown';
 import ORundown from './screens/Coach/ORundown';
+import PlayBook from './screens/Coach/PlayBook/PlayBook';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -116,16 +123,29 @@ function App(): JSX.Element {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name='Home' component={HomeScreen} />
-        <Stack.Screen name='Inputer' component={Writer} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Inputer" component={Writer} />
+
+        <Stack.Screen name="Offense" component={Offense} />
+        <Stack.Screen name="O Formations" component={OffenseFormation} />
+        <Stack.Screen name="Pick a Play" component={OffensePlays} />
+        <Stack.Screen name="Play Input" component={FormalOPlayInput} />
+
+        <Stack.Screen name="Coverage" component={Coverage} />
+        <Stack.Screen name='Blitz' component={Blitz} />
+        <Stack.Screen name='Line Scheme' component={LineScheme} />
+        <Stack.Screen name='O Ran' component={ORan} />
+        <Stack.Screen name="In" component={In} />
+        <Stack.Screen name="Record Play" component={FormalDPlayInput} />
+
         <Stack.Screen name="Coach's Dash" component={CoachDash} />
+
+        <Stack.Screen name="PlayBook" component={PlayBook} />
+
+        <Stack.Screen name="Stats" component={StatsHome} />
         <Stack.Screen name="Offensive Rundown" component={ORundown} />
         <Stack.Screen name="Defensive Rundown" component={DRundown} />
-        <Stack.Screen name='Offense' component={Offense} />
-        <Stack.Screen name='O Formations' component={OffenseFormation} />
-        <Stack.Screen name='Pick a Play' component={OffensePlays} />
-        <Stack.Screen name='Defense' component={Defense} />
-        <Stack.Screen name='Play Input' component={FormalPlayInput} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

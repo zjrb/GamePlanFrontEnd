@@ -10,6 +10,34 @@ export default function CoachDash({navigation}) {
       style={{
         flex: 1,
         alignItems: 'center',
+        justifyContent: 'center',
+        gap: 40,
+      }}>
+     
+      <Button
+        key={'stats'}
+        title="Stats"
+        onPress={() => goTo('Stats')}
+      />
+       <Button
+        key={'offense'}
+        title="PlayBook"
+        onPress={() => goTo('PlayBook')}
+      />
+    </View>
+  );
+}
+
+export function StatsHome({navigation}) {
+  function goTo(val) {
+    navigation.navigate(val);
+  }
+
+  return (
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
         justifyContent: 'space-evenly',
       }}>
       <Button

@@ -1,6 +1,18 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 
 export default function ORundown() {
+  // fetch('https://mywebsite.com/endpoint/', {
+  //   method: 'POST',
+  //   headers: {
+  //     Accept: 'application/json',
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     firstParam: 'yourValue',
+  //     secondParam: 'yourOtherValue',
+  //   }),
+  // });
+
   const status = {
     posession: 'On Offense',
     down: '2 down',
@@ -239,6 +251,6 @@ const styles = StyleSheet.create({
   },
   drive: {
     gap: 5,
-    alignItems: 'center'
+    alignItems: 'center',
   },
 });
